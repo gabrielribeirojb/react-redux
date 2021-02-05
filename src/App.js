@@ -1,5 +1,6 @@
 import React from 'react';
 import {createStore} from 'redux';
+import axios from 'axios';
 import './App.css';
 
 const reducer = (state, action) =>{
@@ -9,8 +10,16 @@ const reducer = (state, action) =>{
   else if(action.type === 'DESC'){
     return state - action.payload;
   }
+  else if(action.type === 'INFO'){
+    console.log(action.titulo);
+  }
   return state;
 }
+
+axios.get('https://my-json-server.typicode.com/typicode/demo/posts').then((response) => {
+  console.log(response);
+  store.dispatch({type: 'INFO', titulo:response.data[0]})
+})
 
 const store = createStore(reducer, 0);
 
