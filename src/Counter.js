@@ -5,11 +5,11 @@ import './App.css';
 class Counter extends React.Component{
 
   increment = () => {
-    
+    this.props.dispatch({'type': 'INCREMENT'});
   }
 
   alterarTitulo = () => {
-    
+    this.props.dispatch({'type':'ALTERAR_TITULO', })
   }
 
   render(){
